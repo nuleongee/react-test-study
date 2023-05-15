@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+
 import TodoForm from './index.jsx';
 
-describe('<TodoForm/>', () => {
-  const setup = props => {
+describe('<TodoForm />', () => {
+  const setup = (props = {}) => {
     const utils = render(<TodoForm {...props} />);
     const input = screen.getByPlaceholderText('할 일을 입력하세요');
     const button = screen.getByText('등록');
@@ -16,7 +17,7 @@ describe('<TodoForm/>', () => {
 
   it('has input and a button', () => {
     const { input, button } = setup();
-    expect(input).toBeTruthy();
+    expect(input).toBeTruthy(); // 해당 값이 truthy 한 값인지 확인
     expect(button).toBeTruthy();
   });
 

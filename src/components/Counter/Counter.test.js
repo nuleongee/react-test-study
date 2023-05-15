@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Counter from './Counter.jsx';
 
-describe('<Counter /', () => {
+describe('<Counter />', () => {
   it('matches snapshot', () => {
     const utils = render(<Counter />);
     expect(utils.container).toMatchSnapshot();
