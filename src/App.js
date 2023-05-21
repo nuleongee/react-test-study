@@ -1,12 +1,10 @@
 import './App.css';
-import Profile from './components/Profile/Profile.jsx';
-import Counter from './components/Counter/Counter.jsx';
+import TodoApp from './components/TodoApp/index.jsx';
 
 function App() {
   return (
     <>
-      <Profile username="nuleongee" name="누렁이" />
-      <Counter />
+      <TodoApp />
     </>
   );
 }

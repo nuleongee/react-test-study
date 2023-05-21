@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import TodoApp from './index.jsx';
 
@@ -16,7 +16,7 @@ describe('<TodoApp />', () => {
     screen.getByText('react-testing-library 사용하기');
   });
 
-  it('creates new todos', () => {
+  it('creates new todos', async () => {
     // render(<TodoApp />);
     render(<TodoApp />);
     // 이벤트를 발생시켜서 새 항목을 추가하면
@@ -27,6 +27,6 @@ describe('<TodoApp />', () => {
     });
     fireEvent.click(screen.getByText('등록'));
     // 해당 항목이 보여져야 함
-    screen.getByText('새 항목 추가하기');
+    await screen.findByText('새 항목 추가하기');
   });
 });
