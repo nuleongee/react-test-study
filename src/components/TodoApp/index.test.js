@@ -29,4 +29,14 @@ describe('<TodoApp />', () => {
     // 해당 항목이 보여져야 함
     await screen.findByText('새 항목 추가하기');
   });
+
+  it('toggles todo', () => {
+    render(<TodoApp />);
+    const todoText = screen.getByText('TDD 배우기');
+    expect(todoText).toHaveStyle('text-decoration: line-through;');
+    fireEvent.click(todoText);
+    expect(todoText).not.toHaveStyle('text-decoration: line-through;');
+    fireEvent.click(todoText);
+    expect(todoText).toHaveStyle('text-decoration: line-through;');
+  });
 });
