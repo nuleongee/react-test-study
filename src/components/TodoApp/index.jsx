@@ -31,13 +31,17 @@ const TodoApp = () => {
   );
 
   const onToggle = useCallback(id => {
-    setTodos(prevTodos => prevTodos.map(todo => (todo.id === id ? { ...todo, done: !todo.done } : todo)));
+    setTodos(prevState => prevState.map(todo => (todo.id === id ? { ...todo, done: !todo.done } : todo)));
+  }, []);
+
+  const onRemove = useCallback(id => {
+    setTodos(prevState => prevState.filter(todos => todos.id !== id));
   }, []);
 
   return (
     <>
       <TodoForm data-testid="helloworld" onInsert={onInsert} />
-      <TodoList todos={todos} onToggle={onToggle} />
+      <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
     </>
   );
 };

@@ -39,4 +39,14 @@ describe('<TodoApp />', () => {
     fireEvent.click(todoText);
     expect(todoText).toHaveStyle('text-decoration: line-through;');
   });
+
+  it('removes todo', () => {
+    render(<TodoApp />);
+    const todoText = screen.getByText('TDD 배우기');
+    const removeButton = todoText.nextSibling; // ! 노드에 직접 접근 지양
+    fireEvent.click(removeButton);
+    expect(todoText).not.toBeInTheDocument(); // 페이지에서 사라졌음을 의미
+    // const removedText = screen.queryByText('TDD 배우기');
+    // expect(removedText).toBeNull();
+  });
 });
