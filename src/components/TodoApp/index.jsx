@@ -14,21 +14,18 @@ const TodoApp = () => {
   ]);
   const nextId = useRef(3); //  새로 추가 할 항목에서 사용할 id
 
-  const onInsert = useCallback(
-    text => {
-      // 새 항목 추가 후
-      setTodos(
-        todos.concat({
-          id: nextId.current,
-          text,
-          done: false,
-        }),
-      );
-      // nextId 값에 1 더하기
-      nextId.current += 1;
-    },
-    [todos],
-  );
+  const onInsert = useCallback(text => {
+    // 새 항목 추가 후
+    setTodos(prevState =>
+      prevState.concat({
+        id: nextId.current,
+        text,
+        done: false,
+      }),
+    );
+    // nextId 값에 1 더하기
+    nextId.current += 1;
+  }, []);
 
   const onToggle = useCallback(id => {
     setTodos(prevState => prevState.map(todo => (todo.id === id ? { ...todo, done: !todo.done } : todo)));
