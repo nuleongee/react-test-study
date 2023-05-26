@@ -1,8 +1,8 @@
 import './App.css';
-import TodoApp from './components/TodoApp/index.jsx';
+import DelayedToggle from './components/DelayedToggle/index.jsx';
 
 function App() {
-  return <TodoApp />;
+  return <DelayedToggle />;
 }
 
 export default App;
